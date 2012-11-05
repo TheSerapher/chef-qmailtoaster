@@ -6,7 +6,7 @@ action :install do
   remote_file "#{node["qmailtoaster"]["workspace"]}/SRPMS/#{new_resource.name}-#{new_resource.version}.src.rpm" do
     source "http://mirrors.qmailtoaster.com/current/SRPMS/#{new_resource.name}-#{new_resource.version}.src.rpm"
     mode 640
-    not_if { ::File.exists?("#{node["qmailtoaster"]["workspace"]}/SRPMS/#{new_resource.name}-#{new_resource.version}.src.rpm")}
+    not_if { ::File.exists?("#{node["qmailtoaster"]["workspace"]}/SRPMS/#{new_resource.name}-#{new_resource.version}.src.rpm") }
   end
   execute "build_#{new_resource.name}" do
     command "rpmbuild --rebuild --with cnt50#{node["qmailtoaster"]["rpmbuild"]["distro"]} #{node["qmailtoaster"]["workspace"]}/SRPMS/#{new_resource.name}-#{new_resource.version}.src.rpm"
@@ -14,11 +14,9 @@ action :install do
   end
 
   # Install it
-  log("Installing : #{node["qmailtoaster"]["workspace"]}/RPMS/#{node["machine"]}/#{new_resource.name}-#{new_resource.version}.#{node["machine"]}.rpm")
-
   package new_resource.name do
     action :install
-    source "#{node["qmailtoaster"]["workspace"]}/RPMS/#{node["machine"]}/#{new_resource.name}-#{new_resource.version}.#{node["machine"]}.rpm"
+    source "#{node["qmailtoaster"]["workspace"]}/RPMS/#{new_resource.arch}/#{new_resource.name}-#{new_resource.version}.#{new_resource.arch}.rpm"
     provider Chef::Provider::Package::Rpm
     not_if "rpm -qi #{new_resource.name}"
   end

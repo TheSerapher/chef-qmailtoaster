@@ -30,13 +30,12 @@ default["qmailtoaster"]["packages"]["sources"] = [
     { "name" => "courier-authlib-toaster", "version" => "0.59.2-1.3.10" },
     { "name" => "courier-imap-toaster", "version" => "4.1.2-1.3.10" },
     { "name" => "autorespond-toaster", "version" => "2.0.5-1.4.0" },
-    { "name" => "control-panel-toaster", "version" => "0.5-1.4.0" },
+    { "name" => "control-panel-toaster", "version" => "0.5-1.4.0", "arch" => "noarch" },
+    { "name" => "ezmlm-toaster", "version" => "0.53.324-1.3.6" },
     # { "name" => "", "version" => "" },
 ]
 
 
-# autorespond-toaster-2.0.5-1.4.0.src.rpm
-# control-panel-toaster-0.5-1.4.0.src.rpm
 # ezmlm-toaster-0.53.324-1.3.6.src.rpm
 # qmailadmin-toaster-1.2.16-1.4.0.src.rpm
 # qmailmrtg-toaster-4.2-1.3.7.src.rpm
