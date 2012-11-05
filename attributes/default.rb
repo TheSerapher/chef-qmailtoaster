@@ -14,7 +14,8 @@ default["qmailtoaster"]["packages"]["required"] = %w{
   expect-devel gdbm gdbm-devel gmp gmp-devel groff httpd-devel httpd-manual krb5-auth-dialog
   krb5-devel krb5-libs krb5-workstation libgcc libidn libidn-devel libtool libtool-ltdl libtool-ltdl-devel
   mysql-bench mrtg openssl-devel pcre-devel php-ldap
-  perl-libwww-perl perl-Archive-Tar perl-Digest-HMAC perl-Digest-SHA1 perl-HTML-Parser perl-Net-DNS
+  perl-libwww-perl perl-Archive-Tar perl-Digest-HMAC perl-Digest-SHA1 perl-HTML-Parser perl-Net-DNS perl-Time-HiRes
+  perl-Mail-SPF-Query
   sed setup stunnel system-config-date wget which zlib zlib-devel ncurses-devel
   redhat-rpm-config rpm-build rpm-devel rpm-libs rpm-python
 }
@@ -32,18 +33,13 @@ default["qmailtoaster"]["packages"]["sources"] = [
     { "name" => "autorespond-toaster", "version" => "2.0.5-1.4.0" },
     { "name" => "control-panel-toaster", "version" => "0.5-1.4.0", "arch" => "noarch" },
     { "name" => "ezmlm-toaster", "version" => "0.53.324-1.3.6" },
-    # { "name" => "", "version" => "" },
+    { "name" => "qmailadmin-toaster", "version" => "1.2.16-1.4.0" },
+    { "name" => "qmailmrtg-toaster", "version" => "4.2-1.3.7" },
+    { "name" => "maildrop-toaster", "version" => "2.0.3-1.3.8" },
+    { "name" => "isoqlog-toaster", "version" => "2.1-1.3.7" },
+    { "name" => "spamassassin-toaster", "version" => "3.3.2-1.4.3" },
+    { "name" => "clamav-toaster", "version" => "0.97.6-1.4.2" },
+    { "name" => "ripmime-toaster", "version" => "1.4.0.6-1.3.6" },
+    { "name" => "simscan-toaster", "version" => "1.4.0-1.4.0" },
+    { "name" => "vqadmin-toaster", "version" => "2.3.7-1.4.1" },
 ]
-
-
-# ezmlm-toaster-0.53.324-1.3.6.src.rpm
-# qmailadmin-toaster-1.2.16-1.4.0.src.rpm
-# qmailmrtg-toaster-4.2-1.3.7.src.rpm
-# maildrop-toaster-2.0.3-1.3.8.src.rpm
-# isoqlog-toaster-2.1-1.3.7.src.rpm
-# squirrelmail-toaster-1.4.20-1.3.17.src.rpm
-# spamassassin-toaster-3.3.2-1.4.3.src.rpm
-# clamav-toaster-0.97.6-1.4.2.src.rpm
-# ripmime-toaster-1.4.0.6-1.3.6.src.rpm
-# simscan-toaster-1.4.0-1.4.0.src.rpm
-# vqadmin-toaster-2.3.7-1.4.1.src.rpm
