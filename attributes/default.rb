@@ -15,7 +15,7 @@ default["qmailtoaster"]["packages"]["required"] = %w{
   krb5-devel krb5-libs krb5-workstation libgcc libidn libidn-devel libtool libtool-ltdl libtool-ltdl-devel
   mysql-bench mrtg openssl-devel pcre-devel php-ldap
   perl-libwww-perl perl-Archive-Tar perl-Digest-HMAC perl-Digest-SHA1 perl-HTML-Parser perl-Net-DNS perl-Time-HiRes
-  perl-Mail-SPF-Query
+  perl-Mail-SPF-Query perl-ExtUtils-MakeMaker
   sed setup stunnel system-config-date wget which zlib zlib-devel ncurses-devel
   redhat-rpm-config rpm-build rpm-devel rpm-libs rpm-python
 }
