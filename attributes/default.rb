@@ -1,3 +1,11 @@
+#
+# Cookbook Name:: qmailtoaster
+# Recipe:: _pre_configuration
+#
+# Copyright 2012, Sebastian Grewe
+#
+# All rights reserved - Do Not Redistribute
+
 # Our workspace to download the SRPMs too
 default["qmailtoaster"]["workspace"] = "/root/rpmbuild"
 
@@ -13,9 +21,9 @@ default["qmailtoaster"]["packages"]["required"] = %w{
   compat-gcc-34-c++ compat-glibc compat-glibc-headers curl libcurl-devel expect
   expect-devel gdbm gdbm-devel gmp gmp-devel groff httpd-devel httpd-manual krb5-auth-dialog
   krb5-devel krb5-libs krb5-workstation libgcc libidn libidn-devel libtool libtool-ltdl libtool-ltdl-devel
-  mysql-bench mrtg openssl-devel pcre-devel php-ldap
+  mysql-bench mrtg openssl-devel pcre-devel php-ldap procmail
   perl-libwww-perl perl-Archive-Tar perl-Digest-HMAC perl-Digest-SHA1 perl-HTML-Parser perl-Net-DNS perl-Time-HiRes
-  perl-Mail-SPF-Query perl-ExtUtils-MakeMaker
+  perl-Mail-SPF-Query perl-ExtUtils-MakeMaker perl-NetAddr-IP
   sed setup stunnel system-config-date wget which zlib zlib-devel ncurses-devel
   redhat-rpm-config rpm-build rpm-devel rpm-libs rpm-python
 }
@@ -41,5 +49,6 @@ default["qmailtoaster"]["packages"]["sources"] = [
     { "name" => "clamav-toaster", "version" => "0.97.6-1.4.2" },
     { "name" => "ripmime-toaster", "version" => "1.4.0.6-1.3.6" },
     { "name" => "simscan-toaster", "version" => "1.4.0-1.4.0" },
-    { "name" => "vqadmin-toaster", "version" => "2.3.7-1.4.1" },
+    # vqadmin-toaster does not install cleanly yet
+    # { "name" => "vqadmin-toaster", "version" => "2.3.7-1.4.1" },
 ]
