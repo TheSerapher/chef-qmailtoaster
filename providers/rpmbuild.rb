@@ -9,7 +9,7 @@ action :install do
     not_if "test -f #{node["qmailtoaster"]["workspace"]}/SRPMS/#{new_resource.name}-#{new_resource.version}.src.rpm"
   end
   execute "build_#{new_resource.name}" do
-    command "rpmbuild --rebuild --with cnt50#{node["qmailtoaster"]["rpmbuild"]["distro"]} #{node["qmailtoaster"]["workspace"]}/SRPMS/#{new_resource.name}-#{new_resource.version}.src.rpm"
+    command "rpmbuild --rebuild --with #{node["qmailtoaster"]["rpmbuild"]["with"]} #{node["qmailtoaster"]["workspace"]}/SRPMS/#{new_resource.name}-#{new_resource.version}.src.rpm"
     not_if "rpm -qi #{new_resource.name}"
   end
 

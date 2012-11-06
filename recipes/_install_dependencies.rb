@@ -1,7 +1,7 @@
 # Include required recipes
 include_recipe "build-essential"
 include_recipe "mysql"
-include_recipe "openssl"
+# include_recipe "openssl"
 include_recipe "mysql"
 include_recipe "mysql::server"
 include_recipe "apache2"

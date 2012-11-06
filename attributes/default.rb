@@ -9,11 +9,16 @@
 # Our workspace to download the SRPMs too
 default["qmailtoaster"]["workspace"] = "/root/rpmbuild"
 
+# Automatically detect the distro string for rpmbuild
 if node["machine"] == "x86_64"
-  default["qmailtoaster"]["rpmbuild"]["distro"] = "64"
+  set_unless["qmailtoaster"]["rpmbuild"]["with"] = "cnt5064"
 else
-  default["qmailtoaster"]["rpmbuild"]["distro"] = ""
+  set_unless["qmailtoaster"]["rpmbuild"]["with"] = "cnt50"
 end
+
+# Database password for vpopmail user
+# Will be set post-installation due to RPM package using this
+
 
 # Package dependency list
 default["qmailtoaster"]["packages"]["required"] = %w{
@@ -21,7 +26,7 @@ default["qmailtoaster"]["packages"]["required"] = %w{
   compat-gcc-34-c++ compat-glibc compat-glibc-headers curl libcurl-devel expect
   expect-devel gdbm gdbm-devel gmp gmp-devel groff httpd-devel httpd-manual krb5-auth-dialog
   krb5-devel krb5-libs krb5-workstation libgcc libidn libidn-devel libtool libtool-ltdl libtool-ltdl-devel
-  mysql-bench mrtg openssl-devel pcre-devel php-ldap procmail
+  mysql-bench mrtg openssl-devel pcre-devel php-ldap procmail ruby-mysql
   perl-libwww-perl perl-Archive-Tar perl-Digest-HMAC perl-Digest-SHA1 perl-HTML-Parser perl-Net-DNS perl-Time-HiRes
   perl-Mail-SPF-Query perl-ExtUtils-MakeMaker perl-NetAddr-IP
   sed setup stunnel system-config-date wget which zlib zlib-devel ncurses-devel

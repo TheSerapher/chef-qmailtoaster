@@ -3,13 +3,14 @@ maintainer_email "sebastian@grewe.ca"
 license          "All rights reserved"
 description      "Installs/Configures qmailtoaster, currently only using supplied configurations by RPM packages."
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          "0.1.0"
+version          "0.0.1"
 
-recipe           "qmailtoaster", "Installs and configures a qmail toaster installation"
+recipe           "qmailtoaster", "Installs and configures a qmail toaster installation, includes many sub-recipes"
 recipe           "qmailtoaster::_add_repositories", "Included by default: Adds required RPMForge Repository"
 recipe           "qmailtoaster::_pre_setup", "Included by default: Removes pre-installed mail server and installs ssmtp for dependency satisfaction"
 recipe           "qmailtoaster::_install_dependencies", "Included by default: Installs are depending packages for the build process"
 recipe           "qmailtoaster::_install_source_rpm", "Included by default: rpmbuilds and installs all source rpms"
+recipe           "qmailtoaster::_create_database", "Included by default: Create vpopmail database and grant access to vpopmail user with default password"
 
 attribute "qmailtoaster/packages/required",
   :display_name => "Required Packages",
@@ -26,6 +27,11 @@ attribute "qmailtoaster/workspace",
   :description => "Location where all SRPMs are placed and compiled, then installed.",
   :default => "/root/rpmbuild"
 
+attribute "qmailtoaster/vpopmail/database/password",
+  :display_name => "Database Password",
+  :description => "vpopmail user database password, will be set after installation completes",
+  :default => "SsEeCcRrEeT"
+
 supports "centos", ">= 6.0"
 
 depends "apache2", ">= 1.2.0"
@@ -34,3 +40,5 @@ depends "mysql", ">= 1.3.0"
 depends "openssl", ">= 1.0.0"
 depends "perl", ">= 1.0.2"
 depends "php", ">= 1.1.0"
+depends "database", ">= 1.3.6"
+depends "openssl"

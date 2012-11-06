@@ -16,5 +16,11 @@ include_recipe "qmailtoaster::_pre_setup"
 # Install dependencies
 include_recipe "qmailtoaster::_install_dependencies"
 
+# Setup our database
+include_recipe "qmailtoaster::_create_database"
+
 # Install our Source RPMs
 include_recipe "qmailtoaster::_install_source_rpm"
+
+# Post setup
+include_recipe "qmailtoaster::_post_setup"

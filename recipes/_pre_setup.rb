@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: qmailtoaster
-# Recipe:: _pre_configuration
+# Recipe:: _pre_setup
 #
 # Copyright 2012, Sebastian Grewe
 #
