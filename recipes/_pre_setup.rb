@@ -18,5 +18,8 @@
 end
 
 # Install some sort of SMTP so crontab etc. still work
-package "ssmtp"
+package "ssmtp" do
+  action :install
+  not_if "rpm -qi qmail-toaster"
+end
 

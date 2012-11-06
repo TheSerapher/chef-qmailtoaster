@@ -16,10 +16,6 @@ else
   set_unless["qmailtoaster"]["rpmbuild"]["with"] = "cnt50"
 end
 
-# Database password for vpopmail user
-# Will be set post-installation due to RPM package using this
-
-
 # Package dependency list
 default["qmailtoaster"]["packages"]["required"] = %w{
   rpm-build kernel-devel compat-libf2c-34 compat-libstdc++-33 aspell bzip2 bzip2-devel bzip2-libs compat-gcc-34
