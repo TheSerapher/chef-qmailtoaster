@@ -1,4 +1,6 @@
-Description
+
+
+Description  [![Build Status](https://travis-ci.org/TheSerapher/chef-qmailtoaster.png)](https://travis-ci.org/TheSerapher/chef-qmailtoaster)
 ===========
 
 Installs/Configures qmailtoaster, currently only using supplied configurations by RPM packages.
