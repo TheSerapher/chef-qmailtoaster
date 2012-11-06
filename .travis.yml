@@ -1,8 +1,9 @@
+language: ruby
+gemfile:
+   - test/support/Gemfile
 rvm:
-  - 1.8.7
   - 1.9.2
   - 1.9.3
-env:
-  - CHEF_VERSION=10.12.0
-  - CHEF_VERSION=10.14.0
-  - CHEF_VERSION=10.16.2
+script:
+  - bundle exec rake knife
+  - bundle exec rake foodcritic
