@@ -1,0 +1,9 @@
+# Bundler
+/.bundle
+/bin/
+/vendor/gems/
+
+# Librarian-Chef
+/.librarian/
+/cookbooks/
+/tmp/

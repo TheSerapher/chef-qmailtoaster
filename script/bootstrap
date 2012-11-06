@@ -4,15 +4,8 @@ set -e
 
 echo "Setting up your environment..."
 
-if command -v ruby >/dev/null; then
-    echo "  + Ruby found: $(ruby --version)"
-else
-    echo "  x You need to install Ruby."
-    exit 1
-fi
-
 if command -v bundle >/dev/null; then
-    echo "  + Bundler found: $(bundle --version)"
+    echo "  + Bundler found."
 else
     echo "  x You need to install Bundler:"
     echo "    gem install bundler"
@@ -20,6 +13,6 @@ else
 fi
 
 echo "  + Bootstrapping your gems..."
-bundle install --binstubs $BUNDLER_OPTS
+bundle install --binstubs --quiet
 
 echo "Done!"

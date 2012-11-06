@@ -2,17 +2,16 @@
 
 set -e
 
-# Bootstrap if required
-test -x bin/rspec || script/bootstrap
+script/bootstrap
 
-# Get cookbook name from metadata.rb or PWD
-COOKBOOK_NAME="$(sed -n "s/name.*\"\(.*\)\"/\1/p" metadata.rb)"
-: ${COOKBOOK_NAME:=$(basename "$PWD")}
+: ${COOKBOOK_NAME:="qmailtoaster"}
+: ${COOKBOOKS_ROOT:="/tmp/cookbooks"}
+COOKBOOKS_PATH="$COOKBOOKS_ROOT/$COOKBOOK_NAME"
 
-# Prepare cookbook folder and run RSpec tests
-COOKBOOKS_PATH="cookbooks"
-rm -rf "$COOKBOOKS_PATH"
-mkdir -p "$COOKBOOKS_PATH"
-ln -snf ../ "$COOKBOOKS_PATH/$COOKBOOK_NAME"
-exec bin/rspec $RSPEC_OPTS "$COOKBOOKS_PATH/$COOKBOOK_NAME/spec"
+echo "  + Installing cookbooks to '$COOKBOOKS_PATH'"
+LIBRARIAN_CHEF_PATH="$COOKBOOKS_PATH"
+export LIBRARIAN_CHEF_PATH
+bundle exec librarian-chef install $LIBRARIAN_OPTS
 
+echo "  + Running RSpec tests..."
+exec bundle exec rspec $RSPEC_OPTS "$COOKBOOKS_PATH/$COOKBOOK_NAME"
