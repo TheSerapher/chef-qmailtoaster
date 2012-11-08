@@ -19,6 +19,7 @@ Requirements
 * perl
 * php
 * database
+* yum
 
 Attributes
 ==========
