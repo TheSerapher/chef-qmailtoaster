@@ -8,10 +8,17 @@ default["spamdyke"]["var_link"] = "/var/spamdyke"
 default["spamdyke"]["conf_dir"] = node["spamdyke"]["base_dir"] + "/etc"
 default["spamdyke"]["bin_dir"] = node["spamdyke"]["base_dir"] + "/bin"
 default["spamdyke"]["var_dir"] = node["spamdyke"]["base_dir"] + "/var"
+default["spamdyke"]["graylist_dir"] = node["spamdyke"]["var_dir"] + "/graylist"
 default["spamdyke"]["conf_file"] = node["spamdyke"]["conf_dir"] + "/spamdyke.conf"
 default["spamdyke"]["qmail"]["supervise"] = "/var/qmail/supervise"
 default["spamdyke"]["qmail"]["control"] = "/var/qmail/control"
 default["spamdyke"]["rcphost"]["files"] = ["rcpthosts", "morercpthosts"]
+
+# Runtime options
+default["spamdyke"]["vpopmail"]["user"] = "vpopmail"
+default["spamdyke"]["vpopmail"]["group"] = "vchkpw"
+default["spamdyke"]["qmail"]["user"] = "qmaill"
+default["spamdyke"]["qmail"]["group"] = "qmail"
 
 # Spamdyke main configuration options
 default["spamdyke"]["config"]["main"] = {
