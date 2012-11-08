@@ -3,7 +3,7 @@
 Description  [![Build Status](https://travis-ci.org/TheSerapher/chef-qmailtoaster.png)](https://travis-ci.org/TheSerapher/chef-qmailtoaster)
 ===========
 
-Installs/Configures qmailtoaster, currently only using supplied configurations by RPM packages.
+Installs/Configures qmailtoaster and Spamdyke (optional)
 
 Requirements
 ============
@@ -30,6 +30,21 @@ Attributes
 * `node['qmailtoaster']['packages']['sources']` - (sorted) array with hashes for all source rpms that will be built.
 * `node['qmailtoaster']['workspace']` - Location where all SRPMs are placed and compiled, then installed.
 * `node['qmailtoaster']['vpopmail']['database']['password']` - vpopmail user database password, will be set after installation completes
+* `node['spamdyke']['version']` - Spamdyke version to install.
+* `node['spamdyke']['source']['url']` - Download URL to fetch source from.
+* `node['spamdyke']['source']['directory']` - Download and extract files here.
+* `node['spamdyke']['base_dir']` - Base directory for spamdyke installation.
+* `node['spamdyke']['config']['main']` - Any key/value pair here will be included in the spamdyke.conf. See spamdyke.rb attributes file.
+* `node['spamdyke']['config']['whitelist']['ip']` - IP whitelist entries.
+* `node['spamdyke']['config']['whitelist']['rdns']` - RDNS whitelist entries.
+* `node['spamdyke']['config']['whitelist']['sender']` - Sender whitelist entries.
+* `node['spamdyke']['config']['whitelist']['recipient']` - Recipient whitelist entries.
+* `node['spamdyke']['config']['whitelist']['keywords']` - Keywords whitelist entries.
+* `node['spamdyke']['config']['blacklist']['ip']` - IP blacklist entries.
+* `node['spamdyke']['config']['blacklist']['rdns']` - RDNS blacklist entries.
+* `node['spamdyke']['config']['blacklist']['sender']` - Sender blacklist entries.
+* `node['spamdyke']['config']['blacklist']['recipient']` - Recipient blacklist entries.
+* `node['spamdyke']['config']['blacklist']['keywords']` - Keywords blacklist entries.
 
 Recipes
 =======
@@ -60,7 +75,28 @@ Included by default: Create vpopmail database and grant access to vpopmail user 
 
 ## qmailtoaster::_post_setup
 
-Included by default: Post installation steps writing out configuration templates
+Included by default: Finishes the installation by writing some custom templates
+
+## qmailtoaster::spamdyke
+
+Install and configure spamdyke using node variables, include sub-recipes
+
+## qmailtoaster::_pre_setup_spamdyke
+
+Included by spamdyke: Install dependencies and create directories
+
+## qmailtoaster::_install_spamdyke
+
+Included by spamdyke: Downloads spamdyke source and installs it
+
+## qmailtoaster::_configure_spamdyke
+
+Included by spamdyke: Configures spamdyke main configuration and black-/whitelists
+
+## qmailtoaster::_test_spamdyke
+
+Included by spamdyke: Tests the current spamdyke configuration
+
 
 License and Author
 ==================
