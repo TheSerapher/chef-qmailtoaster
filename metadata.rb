@@ -11,6 +11,7 @@ recipe           "qmailtoaster::_pre_setup", "Included by default: Removes pre-i
 recipe           "qmailtoaster::_install_dependencies", "Included by default: Installs are depending packages for the build process"
 recipe           "qmailtoaster::_install_source_rpm", "Included by default: rpmbuilds and installs all source rpms"
 recipe           "qmailtoaster::_create_database", "Included by default: Create vpopmail database and grant access to vpopmail user with default password"
+recipe           "qmailtoaster::_post_setup", "Included by default: Finishes the installation by writing some custom templates"
 
 attribute "qmailtoaster/packages/required",
   :display_name => "Required Packages",
@@ -41,5 +42,5 @@ depends "openssl", ">= 1.0.0"
 depends "perl", ">= 1.0.2"
 depends "php", ">= 1.1.0"
 depends "database", ">= 1.3.6"
-depends "openssl"
-depends "yum"
+depends "openssl", ">= 1.0.0"
+depends "yum", ">= 1.0.1"
