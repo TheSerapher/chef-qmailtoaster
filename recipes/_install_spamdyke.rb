@@ -8,7 +8,7 @@
 #
 
 remote_file "#{node["spamdyke"]["source"]["directory"]}/spamdyke-#{node["spamdyke"]["version"]}.tgz" do
-  source "#{node["spamdyke"]["source"]["url"]}/spamdyke-#{node["spamdyke"]["source"]["version"]}.tgz"
+  source "#{node["spamdyke"]["source"]["url"]}/spamdyke-#{node["spamdyke"]["version"]}.tgz"
   not_if "test -f #{node["spamdyke"]["source"]["directory"]}/spamdyke-#{node["spamdyke"]["version"]}.tgz"
 end
 
