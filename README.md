@@ -56,6 +56,9 @@ Included by default: rpmbuilds and installs all source rpms
 
 Included by default: Create vpopmail database and grant access to vpopmail user with default password
 
+## qmailtoaster::_post_setup
+
+Included by default: Post installation steps writing out configuration templates
 
 License and Author
 ==================
