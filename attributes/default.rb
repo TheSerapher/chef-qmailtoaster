@@ -9,13 +9,6 @@
 # Our workspace to download the SRPMs too
 default["qmailtoaster"]["workspace"] = "/root/rpmbuild"
 
-# Automatically detect the distro string for rpmbuild
-if node["machine"] == "x86_64"
-  set_unless["qmailtoaster"]["rpmbuild"]["with"] = "cnt5064"
-else
-  set_unless["qmailtoaster"]["rpmbuild"]["with"] = "cnt50"
-end
-
 # Package dependency list
 default["qmailtoaster"]["packages"]["required"] = %w{
   rpm-build kernel-devel compat-libf2c-34 compat-libstdc++-33 aspell bzip2 bzip2-devel bzip2-libs compat-gcc-34
