@@ -7,6 +7,11 @@
 # All rights reserved - Do Not Redistribute
 #
 
+# Define our resource
+service "qmail" do
+  action :nothing
+end
+
 # Main configuration
 template "#{node["spamdyke"]["conf_dir"]}/spamdyke.conf" do
   source "spamdyke/spamdyke.conf.erb"
