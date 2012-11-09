@@ -7,7 +7,7 @@ action :install do
   else
     rpmbuild_opts = "--with cnt50"
   end
-  Chef::Log.info("Compiling #{new_resource.name} with #{rpmbuild_opts} at version #{new_resource.version} #{node["qmailtoaster"]["rpmbuild"]["distro"]}")
+  Chef::Log.info("Compiling #{new_resource.name} with #{rpmbuild_opts} at version #{new_resource.version}")
   remote_file "#{node["qmailtoaster"]["workspace"]}/SRPMS/#{new_resource.name}-#{new_resource.version}.src.rpm" do
     source "http://mirrors.qmailtoaster.com/current/SRPMS/#{new_resource.name}-#{new_resource.version}.src.rpm"
     mode "640"
