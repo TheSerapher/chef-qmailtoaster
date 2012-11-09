@@ -11,3 +11,4 @@ script: script/ci
 branches:
   only:
     - master
+    - next
