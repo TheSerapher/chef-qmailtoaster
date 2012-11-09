@@ -29,4 +29,12 @@ module ChefSpec
       end
     end
   end
+
+  RSpec::Matchers.define :remove_rpm_package do |package_name|
+    match do |chef_run|
+      chef_run.resources.any? do |resource|
+        resource_type(resource) == 'rpm_package' and resource.name == package_name
+      end
+    end
+  end
 end
