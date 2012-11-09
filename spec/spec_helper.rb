@@ -30,10 +30,27 @@ module ChefSpec
     end
   end
 
+  # To check for RPM package removal in LWRP
   RSpec::Matchers.define :remove_rpm_package do |package_name|
     match do |chef_run|
       chef_run.resources.any? do |resource|
         resource_type(resource) == 'rpm_package' and resource.name == package_name
+      end
+    end
+  end
+
+  # To check MySQL calls
+  RSpec::Matchers.define :mysql_database do |name|
+    match do |chef_run|
+      chef_run.resources.any? do |resource|
+        resource.resource_name.to_s == 'mysql_database' && resource.name == name
+      end
+    end
+  end
+  RSpec::Matchers.define :mysql_database_user do |name|
+    match do |chef_run|
+      chef_run.resources.any? do |resource|
+        resource.resource_name.to_s == 'mysql_database_user' && resource.name == name
       end
     end
   end
