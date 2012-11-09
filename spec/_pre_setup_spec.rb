@@ -6,7 +6,7 @@ describe 'qmailtoaster::_pre_setup' do
   }
   %w{ postfix exim sendmail }.each do |pkg|
     it "should remove package #{pkg}" do
-      @chef_run.should remove_package pkg
+      @chef_run.should remove_rpm_package pkg
     end
   end
 end
