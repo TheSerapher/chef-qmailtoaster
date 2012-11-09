@@ -2,8 +2,8 @@
 QMAILDUID=`id -u vpopmail`
 NOFILESGID=`id -g vpopmail`
 MAXSMTPD=`cat /var/qmail/control/concurrencyincoming`
-SPAMDYKE="#{node["spamdyke"]["bin_dir"]/}spamdyke"
-SPAMDYKE_CONF="/etc/spamdyke/spamdyke.conf"
+SPAMDYKE="<%= node["spamdyke"]["bin_dir"] %>/spamdyke"
+SPAMDYKE_CONF="<%= node["spamdyke"]["conf_link"] %>/spamdyke.conf"
 SMTPD="/var/qmail/bin/qmail-smtpd"
 TCP_CDB="/etc/tcprules.d/tcp.smtp.cdb"
 HOSTNAME=`hostname`

@@ -7,19 +7,13 @@
 # All rights reserved - Do Not Redistribute
 #
 
-%w{ postfix exim }.each do |pkg|
-  package pkg do
+%w{ postfix exim sendmail }.each do |pkg|
+  rpm_package pkg do
     action :remove
+    options "--nodeps"
     only_if "rpm -qi #{pkg}"
   end
   user pkg do
     action :remove
   end
 end
-
-# Install some sort of SMTP so crontab etc. still work
-package "ssmtp" do
-  action :install
-  not_if "rpm -qi qmail-toaster"
-end
-

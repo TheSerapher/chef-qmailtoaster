@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: qmailtoaster
-# Recipe:: _pre_configuration
+# Recipe:: _install_source_rpm_frontend
 #
 # Copyright 2012, Sebastian Grewe
 #
@@ -8,13 +8,9 @@
 
 # Include required recipes
 
-node["qmailtoaster"]["packages"]["sources"].each do |data|
+node["qmailtoaster"]["packages"]["frontend"]["sources"].each do |data|
   qmailtoaster_rpmbuild data["name"] do
     version data["version"]
     arch data["arch"]
   end
-end
-
-service "qmail" do
-  action [ :enable, :start ]
 end
