@@ -7,9 +7,8 @@ describe 'qmailtoaster::default' do
   %w{
     qmailtoaster::_add_repositories
     qmailtoaster::_pre_setup
-    qmailtoaster::_install_dependencies
-    qmailtoaster::_create_database
-    qmailtoaster::_install_source_rpm
+    qmailtoaster::_install_dependencies_backend
+    qmailtoaster::_install_source_rpm_backend
     qmailtoaster::_post_setup
   }.each do |recipe|
     it "should include the #{recipe} recipe" do

@@ -1,8 +1,8 @@
 require 'chefspec'
 
-describe 'qmailtoaster::_install_source_rpm' do
+describe 'qmailtoaster::_install_source_rpm_backend' do
   before (:all) {
-      @chef_run = ChefSpec::ChefRunner.new.converge 'qmailtoaster::_install_source_rpm'
+      @chef_run = ChefSpec::ChefRunner.new.converge 'qmailtoaster::_install_source_rpm_backend'
   }
   packages = [
       {"name" => "daemontools-toaster", "version" => "0.76-1.3.6"},
