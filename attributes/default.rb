@@ -15,7 +15,7 @@ default["qmailtoaster"]["packages"]["backend"]["required"] = %w{
   compat-gcc-34-c++ compat-glibc compat-glibc-headers curl libcurl-devel expect
   expect-devel gdbm gdbm-devel gmp gmp-devel groff httpd-devel httpd-manual krb5-auth-dialog
   krb5-devel krb5-libs krb5-workstation libgcc libidn libidn-devel libtool libtool-ltdl libtool-ltdl-devel
-  mysql-bench mrtg openssl-devel pcre-devel procmail ruby-mysql
+  mysql-bench openssl-devel pcre-devel procmail ruby-mysql
   perl-libwww-perl perl-Archive-Tar perl-Digest-HMAC perl-Digest-SHA1 perl-HTML-Parser perl-Net-DNS perl-Time-HiRes
   perl-Mail-SPF-Query perl-ExtUtils-MakeMaker perl-NetAddr-IP
   sed setup stunnel system-config-date wget which zlib zlib-devel ncurses-devel
