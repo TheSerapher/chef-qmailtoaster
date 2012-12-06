@@ -8,13 +8,13 @@
 
 # Include required recipes
 
-node["qmailtoaster"]["packages"]["backend"]["sources"].each do |data|
-  qmailtoaster_rpmbuild data["name"] do
-    version data["version"]
-    arch data["arch"]
+node['qmailtoaster']['packages']['backend']['sources'].each do |data|
+  qmailtoaster_rpmbuild data['name'] do
+    version data['version']
+    arch data['arch']
   end
 end
 
-service "qmail" do
+service 'qmail' do
   action [ :enable, :start ]
 end

@@ -9,9 +9,9 @@
 
 
 # Setup our database
-include_recipe "qmailtoaster::_create_database"
+include_recipe 'qmailtoaster::_create_database'
 
 # Now that everything is installed we do some last minute changes
-template "/home/vpopmail/etc/vpopmail.mysql" do
-  source "vpopmail/vpopmail.mysql.erb"
+template '/home/vpopmail/etc/vpopmail.mysql' do
+  source 'vpopmail/vpopmail.mysql.erb'
 end

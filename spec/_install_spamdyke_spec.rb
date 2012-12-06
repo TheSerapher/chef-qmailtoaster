@@ -6,7 +6,7 @@ describe 'qmailtoaster::_install_spamdyke' do
     @chef_run.converge 'qmailtoaster::_install_spamdyke'
   }
   it 'should create remote file /usr/src/spamdyke/spamdyke-4.3.1.tgz' do
-    @chef_run.should create_remote_file "/usr/src/spamdyke/spamdyke-4.3.1.tgz"
+    @chef_run.should create_remote_file '/usr/src/spamdyke/spamdyke-4.3.1.tgz'
   end
   %w{ unpack-spamdyke compile-spamdyke install-spamdyke }.each do |bs|
     it "should run bash script #{bs}" do
