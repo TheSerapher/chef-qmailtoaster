@@ -2,7 +2,9 @@ require 'chefspec'
 
 describe 'qmailtoaster::_install_dependencies_backend' do
   before (:all) {
-      @chef_run = ChefSpec::ChefRunner.new.converge 'qmailtoaster::_install_dependencies_backend'
+      @chef_run = ChefSpec::ChefRunner.new
+      @chef_run.node.set["mysql"] = { "server_root_password" => "root", "server_debian_password" => "debian", "server_repl_password" => "repl" }
+      @chef_run.converge 'qmailtoaster::_install_dependencies_backend'
   }
   %w{ build-essential mysql mysql::server }.each do |recipe|
     it "should include the #{recipe} cookbook" do
@@ -14,7 +16,7 @@ describe 'qmailtoaster::_install_dependencies_backend' do
     compat-gcc-34-c++ compat-glibc compat-glibc-headers curl libcurl-devel expect
     expect-devel gdbm gdbm-devel gmp gmp-devel groff httpd-devel httpd-manual krb5-auth-dialog
     krb5-devel krb5-libs krb5-workstation libgcc libidn libidn-devel libtool libtool-ltdl libtool-ltdl-devel
-    mysql-bench mrtg openssl-devel pcre-devel procmail ruby-mysql
+    mysql-bench openssl-devel pcre-devel procmail ruby-mysql
     perl-libwww-perl perl-Archive-Tar perl-Digest-HMAC perl-Digest-SHA1 perl-HTML-Parser perl-Net-DNS perl-Time-HiRes
     perl-Mail-SPF-Query perl-ExtUtils-MakeMaker perl-NetAddr-IP
     sed setup stunnel system-config-date wget which zlib zlib-devel ncurses-devel
