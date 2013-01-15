@@ -2,7 +2,9 @@ require 'chefspec'
 
 describe 'qmailtoaster::_install_dependencies_backend' do
   before (:all) {
-      @chef_run = ChefSpec::ChefRunner.new.converge 'qmailtoaster::_install_dependencies_backend'
+      @chef_run = ChefSpec::ChefRunner.new
+      @chef_run.node.set["mysql"] = { "server_root_password" => "root", "server_debian_password" => "debian", "server_repl_password" => "repl" }
+      @chef_run.converge 'qmailtoaster::_install_dependencies_backend'
   }
   %w{ build-essential mysql mysql::server }.each do |recipe|
     it "should include the #{recipe} cookbook" do
