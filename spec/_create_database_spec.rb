@@ -6,12 +6,12 @@ describe 'qmailtoaster::_create_database' do
     @chef_run.converge 'qmailtoaster::_create_database'
   }
   it 'should create database vpopmail' do
-    @chef_run.should mysql_database "vpopmail"
+    @chef_run.should mysql_database 'vpopmail'
   end
   it 'should create user vpopmail' do
-    @chef_run.should mysql_database_user "vpopmail"
+    @chef_run.should mysql_database_user 'vpopmail'
   end
   it 'should flush the privileges' do
-    @chef_run.should mysql_database "flush the privileges"
+    @chef_run.should mysql_database 'flush the privileges'
   end
 end

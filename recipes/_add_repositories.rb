@@ -7,5 +7,5 @@
 # All rights reserved - Do Not Redistribute
 #
 
-include_recipe "yum::yum"
-include_recipe "yum::repoforge"
+include_recipe 'yum::yum'
+include_recipe 'yum::repoforge'
