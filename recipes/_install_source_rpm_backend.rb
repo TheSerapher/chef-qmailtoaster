@@ -13,7 +13,7 @@ node['qmailtoaster']['packages']['backend']['sources'].each do |data|
   # Remove this again as soon as we are able to
   rpm_package "exim-#{data['name']}" do
     name 'exim'
-    options '--no-deps'
+    options '--nodeps'
     action :remove
     only_if { data['name'] == 'qmail-toaster' }
   end
