@@ -1,5 +1,4 @@
-
-Description  [![Build Status](https://travis-ci.org/TheSerapher/chef-qmailtoaster.png?branch=master)](https://travis-ci.org/TheSerapher/chef-qmailtoaster)
+Description  [ ![Codeship Status for TheSerapher/chef-qmailtoaster](https://www.codeship.io/projects/c6ea8420-4b94-0130-815e-12313928a5d9/status?branch=master)](https://www.codeship.io/projects/1313) [![Build Status](https://travis-ci.org/TheSerapher/chef-qmailtoaster.png)](https://travis-ci.org/TheSerapher/chef-qmailtoaster) 
 ===========
 
 Installs/Configures qmailtoaster and Spamdyke (optional)
@@ -95,6 +94,14 @@ Included by spamdyke: Configures spamdyke main configuration and black-/whitelis
 ## qmailtoaster::_test_spamdyke
 
 Included by spamdyke: Tests the current spamdyke configuration
+
+Build Status
+============
+
+This repository is tested against travis-ci.org and codeship.io:
+
+[![Build Status](https://travis-ci.org/TheSerapher/chef-qmailtoaster.png)](https://travis-ci.org/TheSerapher/chef-qmailtoaster)
+[ ![Codeship Status for TheSerapher/chef-qmailtoaster](https://www.codeship.io/projects/c6ea8420-4b94-0130-815e-12313928a5d9/status?branch=master)](https://www.codeship.io/projects/1313)
 
 
 License and Author
