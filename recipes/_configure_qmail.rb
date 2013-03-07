@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: qmailtoaster
-# Recipe:: default
+# Recipe:: _configure_qmail
 #
 # Copyright (C) 2013 Sebastian Grewe <sebastian.grewe@gmail.com>
 #
@@ -16,21 +16,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Define our resource
+service 'qmail' do
+  action :nothing
+end
 
-# Add required repositories
-include_recipe 'qmailtoaster::_add_repositories'
-
-# Remove any existing mailserver but use ssmtp as fallback so cronie is installable
-include_recipe 'qmailtoaster::_pre_setup'
-
-# Install dependencies
-include_recipe 'qmailtoaster::_install_dependencies_backend'
-
-# Install our Source RPMs
-include_recipe 'qmailtoaster::_install_source_rpm_backend'
-
-# Post setup
-include_recipe 'qmailtoaster::_post_setup'
-
-# Some last minute changes
-include_recipe 'qmailtoaster::_configure_qmail'
+# Deploy new run file to ensure qmail has enough memory
+template '/var/qmail/supervise/submission/run' do
+  source 'submission/run.erb'
+  user 'qmaill'
+  group 'qmail'
+  mode '751'
+  notifies :restart, 'service[qmail]'
+end
