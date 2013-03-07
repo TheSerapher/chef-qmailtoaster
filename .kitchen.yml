@@ -1,0 +1,18 @@
+---
+driver_plugin: vagrant
+platforms:
+- name: centos-6.3
+  driver_config:
+    box: centos-6.3
+    box_url: https://opscode-vm.s3.amazonaws.com/vagrant/boxes/opscode-centos-6.3.box
+  run_list:
+suites:
+- name: default
+  run_list:
+  - recipe[up2date]
+  - recipe[qmailtoaster]
+  attributes:
+    mysql:
+      server_root_password: root
+      server_repl_password: repl
+      server_debian_password: debian
