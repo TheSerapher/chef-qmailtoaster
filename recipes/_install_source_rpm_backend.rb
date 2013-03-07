@@ -23,10 +23,11 @@ node['qmailtoaster']['packages']['backend']['sources'].each do |data|
   # When mrtg is installed exim gets re-installed
   # Remove this again as soon as we are able to
   rpm_package "exim-#{data['name']}" do
-    name 'exim'
+    package_name 'exim'
     options '--nodeps'
     action :remove
     only_if { data['name'] == 'qmail-toaster' }
+    ignore_failure true
   end
   qmailtoaster_rpmbuild data['name'] do
     version data['version']
