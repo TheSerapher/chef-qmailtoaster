@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: qmailtoaster
-# Recipe:: _install_source_rpm_backend
+# Recipe:: _configure_qmail
 #
 # Copyright (C) 2013 Sebastian Grewe <sebastian.grewe@gmail.com>
 #
@@ -16,14 +16,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Install packages from source
-node['qmailtoaster']['packages']['backend']['sources'].each do |data|
-  qmailtoaster_rpmbuild data['name'] do
-    version data['version']
-    arch data['arch']
-  end
+# Define our resource
+service 'qmail' do
+  action :nothing
 end
 
-service 'qmail' do
-  action [ :enable, :start ]
+# Deploy new run file to ensure qmail has enough memory
+template '/var/qmail/supervise/submission/run' do
+  source 'submission/run.erb'
+  user 'qmaill'
+  group 'qmail'
+  mode '751'
+  notifies :restart, 'service[qmail]'
 end

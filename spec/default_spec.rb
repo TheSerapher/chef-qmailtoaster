@@ -12,6 +12,7 @@ describe 'qmailtoaster::default' do
     qmailtoaster::_install_dependencies_backend
     qmailtoaster::_install_source_rpm_backend
     qmailtoaster::_post_setup
+    qmailtoaster::_configure_qmail
   }.each do |recipe|
     it "should include the #{recipe} recipe" do
       @chef_run.should include_recipe recipe

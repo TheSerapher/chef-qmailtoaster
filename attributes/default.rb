@@ -54,9 +54,12 @@ default['qmailtoaster']['packages']['backend']['sources'] = [
 
 default['qmailtoaster']['packages']['frontend']['sources'] = [
     {'name' => 'control-panel-toaster', 'version' => '0.5-1.4.0', 'arch' => 'noarch'},
-    {'name' => 'qmailadmin-toaster', 'version' => '1.2.16-1.4.0'},
+    {'name' => 'qmailadmin-toaster', 'version' => '1.2.16-1.4.1'},
     {'name' => 'qmailmrtg-toaster', 'version' => '4.2-1.3.7'},
     {'name' => 'isoqlog-toaster', 'version' => '2.1-1.3.7'},
     # vqadmin-toaster does not install cleanly yet
     # { 'name' => 'vqadmin-toaster', 'version' => '2.3.7-1.4.1' },
 ]
+
+# Ensure build essential is installed first
+set['build_essential']['compiletime'] = true

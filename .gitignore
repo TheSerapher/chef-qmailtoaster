@@ -1,9 +1,14 @@
 # Bundler
-/.bundle
+/.bundle/
 /bin/
+/bundle/
 /vendor/gems/
 
-# Librarian-Chef
-/.librarian/
+# Berkshelf
 /cookbooks/
-/tmp/
+Berksfile.lock
+
+# Vagrant
+.vagrant
+.kitchen/
+.kitchen.local.yml
