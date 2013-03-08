@@ -16,19 +16,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Include required recipes
-
-# Install packages
+# Install packages from source
 node['qmailtoaster']['packages']['backend']['sources'].each do |data|
-  # When mrtg is installed exim gets re-installed
-  # Remove this again as soon as we are able to
-  rpm_package "exim-#{data['name']}" do
-    package_name 'exim'
-    options '--nodeps'
-    action :remove
-    only_if { data['name'] == 'qmail-toaster' }
-    ignore_failure true
-  end
   qmailtoaster_rpmbuild data['name'] do
     version data['version']
     arch data['arch']

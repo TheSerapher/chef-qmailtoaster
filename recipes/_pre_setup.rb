@@ -20,9 +20,10 @@
   rpm_package pkg do
     action :remove
     options '--nodeps'
-    only_if 'rpm -qi #{pkg}'
+    only_if "rpm -qi #{pkg}"
   end
   user pkg do
     action :remove
+    only_if { "grep -q #{pkg} /etc/passwd" }
   end
 end
