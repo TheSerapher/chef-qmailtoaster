@@ -63,6 +63,7 @@ module Helpers
         end
       end
       smtp.finish
+      sleep(2)
       return ret
     end
   end
