@@ -5,6 +5,9 @@ platforms:
   driver_config:
     box: centos-6.3
     box_url: https://opscode-vm.s3.amazonaws.com/vagrant/boxes/opscode-centos-6.3.box
+    customize:
+      memory: 2048
+      cpus: 4
 suites:
 - name: default
   run_list:

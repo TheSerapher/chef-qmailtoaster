@@ -111,7 +111,7 @@ describe "qmailtoaster::default" do
     sendMail
     imap = Net::IMAP.new(IPADDRESS, 143)
     imap.authenticate('LOGIN', INTERNALEMAIL, INTERNALPASSWORD)
-    imap.status('INBOX', [ 'UNSEEN' ])['UNSEEN'].must_equal 1, 'Unable find unseen mail'
+    imap.status('INBOX', [ 'UNSEEN' ])['UNSEEN'].must_equal 1, 'Unable to read mailbox'
   end
 
   it 'checking pop3 and pop3-ssl services' do
@@ -119,7 +119,7 @@ describe "qmailtoaster::default" do
     Net::POP3.enable_ssl(OpenSSL::SSL::VERIFY_NONE)
     assert Net::POP3.new(IPADDRESS).start(INTERNALEMAIL, INTERNALPASSWORD).started?, 'Unable to establish a pop3-ssl connection'
     sendMail
-    Net::POP3.new(IPADDRESS).start(INTERNALEMAIL, INTERNALPASSWORD).mails.size.must_equal 1
+    Net::POP3.new(IPADDRESS).start(INTERNALEMAIL, INTERNALPASSWORD).mails.size.must_equal 1, 'Unable to read mailbox'
   end
 
   it 'checking spamd service' do
@@ -128,6 +128,6 @@ describe "qmailtoaster::default" do
   end
 
   it 'checking clamd service' do
-    `echo "#{INTERNALMAILMESSAGE}" > /tmp/mail.txt; /usr/bin/clamdscan /tmp/mail.txt; rm -f /tmp/mail.txt`.wont_match(/Total errors:/)
+    `echo "#{INTERNALMAILMESSAGE}" > /tmp/mail.txt; sleep 5; /usr/bin/clamdscan /tmp/mail.txt; rm -f /tmp/mail.txt`.wont_match(/Total errors:/)
   end
 end
