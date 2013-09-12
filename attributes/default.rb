@@ -47,7 +47,7 @@ default['qmailtoaster']['packages']['backend']['sources'] = [
     {'name' => 'ezmlm-toaster', 'version' => '0.53.324-1.3.6'},
     {'name' => 'maildrop-toaster', 'version' => '2.0.3-1.3.8'},
     {'name' => 'spamassassin-toaster', 'version' => '3.3.2-1.4.3'},
-    {'name' => 'clamav-toaster', 'version' => '0.97.6-1.4.2'},
+    {'name' => 'clamav-toaster', 'version' => '0.97.8-1.4.4'},
     {'name' => 'ripmime-toaster', 'version' => '1.4.0.6-1.3.6'},
     {'name' => 'simscan-toaster', 'version' => '1.4.0-1.4.0'},
 ]
