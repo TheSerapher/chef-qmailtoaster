@@ -2,6 +2,11 @@
 
 This file is used to list changes made in each version of qmailtoaster.
 
+## 0.0.5:
+
+* Removed version dependencies in metadata
+* Increased memory allocation on submission
+
 ## 0.0.4:
 
 * Changed license to Apache 2.0
