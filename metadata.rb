@@ -4,7 +4,7 @@ maintainer_email 'sebastian@grewe.ca'
 license          'Apache 2.0'
 description      'Installs/Configures qmailtoaster and Spamdyke (optional)'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '0.0.6'
+version          '0.0.7'
 
 recipe           'qmailtoaster', 'Installs and configures a qmail toaster installation, includes many sub-recipes'
 recipe           'qmailtoaster::_add_repositories', 'Included by default: Adds required RPMForge Repository'
