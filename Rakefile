@@ -63,4 +63,4 @@ task :lint => :foodcritic
 task :spec => :chefspec
 
 # Cleanup testing cookbooks
-END { rm_rf COOKBOOKS_PATH }
+at_exit { rm_rf COOKBOOKS_PATH }
