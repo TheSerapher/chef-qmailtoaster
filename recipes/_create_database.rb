@@ -20,7 +20,7 @@
 node.set_unless['qmailtoaster']['vpopmail']['database']['password'] = secure_password
 
 # Setup vpopmail account so the database can be created during RPM installation
-mysql_connection_info = {:host => 'localhost', :username => 'root', :password => node['mysql']['server_root_password']}
+mysql_connection_info = { 'host' => 'localhost', 'username' => 'root', 'password' => node['mysql']['server_root_password'] }
 
 mysql_database 'vpopmail' do
   connection mysql_connection_info

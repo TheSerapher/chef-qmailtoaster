@@ -18,7 +18,7 @@
 
 # Define our qmail service for notifier
 service 'qmail' do
-  supports [ :start, :restart ]
+  supports [:start, :restart]
   action :nothing
 end
 

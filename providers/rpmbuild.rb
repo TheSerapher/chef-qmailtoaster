@@ -1,8 +1,9 @@
 action :install do
-  directory "#{node['qmailtoaster']['workspace']}/SRPMS" do
+  directory "#{new_resource.name}-create-workspace" do
+    path "#{node['qmailtoaster']['workspace']}/SRPMS"
     recursive true
   end
-  if  node['kernel']['machine'] =~ /x86_64/ then
+  if node['kernel']['machine'] =~ /x86_64/
     rpmbuild_opts = '--with cnt5064'
   else
     rpmbuild_opts = '--with cnt50'

@@ -25,5 +25,5 @@ node['qmailtoaster']['packages']['backend']['sources'].each do |data|
 end
 
 service 'qmail' do
-  action [ :enable ]
+  action [:enable]
 end

@@ -1,12 +1,12 @@
 require 'chefspec'
 
 describe 'qmailtoaster::spamdyke' do
-  before(:all) {
+  before(:all) do
     @chef_run = ChefSpec::ChefRunner.new
-    @chef_run.node.set["mysql"] = { "server_root_password" => "root", "server_debian_password" => "debian", "server_repl_password" => "repl" }
+    @chef_run.node.set['mysql'] = { 'server_root_password' => 'root', 'server_debian_password' => 'debian', 'server_repl_password' => 'repl' }
     @chef_run.node.set['platform_family'] = 'rhel'
     @chef_run.converge 'qmailtoaster::spamdyke'
-  }
+  end
   %w{
     build-essential
     qmailtoaster

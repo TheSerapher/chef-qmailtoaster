@@ -35,28 +35,28 @@ default['qmailtoaster']['packages']['frontend']['required'] = %w{
 
 # Our packages and their versions
 default['qmailtoaster']['packages']['backend']['sources'] = [
-    {'name' => 'daemontools-toaster', 'version' => '0.76-1.3.6'},
-    {'name' => 'ucspi-tcp-toaster', 'version' => '0.88-1.3.9'},
-    {'name' => 'vpopmail-toaster', 'version' => '5.4.33-1.4.0'},
-    {'name' => 'libdomainkeys-toaster', 'version' => '0.68-1.3.6'},
-    {'name' => 'libsrs2-toaster', 'version' => '1.0.18-1.3.6'},
-    {'name' => 'qmail-toaster', 'version' => '1.03-1.3.22'},
-    {'name' => 'courier-authlib-toaster', 'version' => '0.59.2-1.3.10'},
-    {'name' => 'courier-imap-toaster', 'version' => '4.1.2-1.3.10'},
-    {'name' => 'autorespond-toaster', 'version' => '2.0.5-1.4.0'},
-    {'name' => 'ezmlm-toaster', 'version' => '0.53.324-1.3.6'},
-    {'name' => 'maildrop-toaster', 'version' => '2.0.3-1.3.8'},
-    {'name' => 'spamassassin-toaster', 'version' => '3.3.2-1.4.3'},
-    {'name' => 'clamav-toaster', 'version' => '0.97.8-1.4.4'},
-    {'name' => 'ripmime-toaster', 'version' => '1.4.0.6-1.3.6'},
-    {'name' => 'simscan-toaster', 'version' => '1.4.0-1.4.0'},
+    { 'name' => 'daemontools-toaster', 'version' => '0.76-1.3.6' },
+    { 'name' => 'ucspi-tcp-toaster', 'version' => '0.88-1.3.9' },
+    { 'name' => 'vpopmail-toaster', 'version' => '5.4.33-1.4.0' },
+    { 'name' => 'libdomainkeys-toaster', 'version' => '0.68-1.3.6' },
+    { 'name' => 'libsrs2-toaster', 'version' => '1.0.18-1.3.6' },
+    { 'name' => 'qmail-toaster', 'version' => '1.03-1.3.22' },
+    { 'name' => 'courier-authlib-toaster', 'version' => '0.59.2-1.3.10' },
+    { 'name' => 'courier-imap-toaster', 'version' => '4.1.2-1.3.10' },
+    { 'name' => 'autorespond-toaster', 'version' => '2.0.5-1.4.0' },
+    { 'name' => 'ezmlm-toaster', 'version' => '0.53.324-1.3.6' },
+    { 'name' => 'maildrop-toaster', 'version' => '2.0.3-1.3.8' },
+    { 'name' => 'spamassassin-toaster', 'version' => '3.3.2-1.4.3' },
+    { 'name' => 'clamav-toaster', 'version' => '0.97.8-1.4.4' },
+    { 'name' => 'ripmime-toaster', 'version' => '1.4.0.6-1.3.6' },
+    { 'name' => 'simscan-toaster', 'version' => '1.4.0-1.4.0' },
 ]
 
 default['qmailtoaster']['packages']['frontend']['sources'] = [
-    {'name' => 'control-panel-toaster', 'version' => '0.5-1.4.0', 'arch' => 'noarch'},
-    {'name' => 'qmailadmin-toaster', 'version' => '1.2.16-1.4.1'},
-    {'name' => 'qmailmrtg-toaster', 'version' => '4.2-1.3.7'},
-    {'name' => 'isoqlog-toaster', 'version' => '2.1-1.3.7'},
+    { 'name' => 'control-panel-toaster', 'version' => '0.5-1.4.0', 'arch' => 'noarch' },
+    { 'name' => 'qmailadmin-toaster', 'version' => '1.2.16-1.4.1' },
+    { 'name' => 'qmailmrtg-toaster', 'version' => '4.2-1.3.7' },
+    { 'name' => 'isoqlog-toaster', 'version' => '2.1-1.3.7' },
     # vqadmin-toaster does not install cleanly yet
     # { 'name' => 'vqadmin-toaster', 'version' => '2.3.7-1.4.1' },
 ]
