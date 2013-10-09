@@ -23,6 +23,6 @@ else
 fi
 
 echo "  + Bootstrapping your gems..."
-bundle install --standalone --binstubs --local --path vendor/gems $BUNDLER_OPTS
+bundle install --standalone --binstubs --path vendor/gems $BUNDLER_OPTS
 
 echo "Completed! You can now run bundle exec rake or bundle exec kitchen test"
