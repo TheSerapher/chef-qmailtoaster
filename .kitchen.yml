@@ -1,0 +1,23 @@
+driver_plugin: vagrant
+driver_config:
+  require_chef_omnibus: false
+
+platforms:
+- name: centos-6.4
+  driver_config:
+    box: centos-6.4
+    box_url: https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_centos-6.4_provisionerless.box
+    customize:
+      memory: 2048
+      cpus: 4
+
+suites:
+- name: default
+  run_list: [
+    "recipe[minitest-handler]",
+    "recipe[qmailtoaster]",
+    "recipe[qmailtoaster::spamdyke]"
+  ]
+  attributes: {
+    "mysql": { "server_root_password": "root", "server_debian_password": "debian", "server_repl_password": "repl" }
+  }

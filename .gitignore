@@ -8,6 +8,9 @@
 /cookbooks/
 Berksfile.lock
 
+# Bundler
+Gemfile.lock
+
 # Vagrant
 .vagrant
 .kitchen/

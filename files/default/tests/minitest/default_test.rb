@@ -15,23 +15,23 @@
 
 require File.expand_path('../support/helpers', __FILE__)
 
-describe "qmailtoaster::default" do
+describe 'qmailtoaster::default' do
   include Helpers::QmailtoasterTest
 
   before do
     # Create test domain and user
     system("! test -d /home/vpopmail/domains/#{INTERNALDOMAIN} && /home/vpopmail/bin/vadddomain #{INTERNALDOMAIN} test")
-    assert $?.success?, "Unable to create domain #{INTERNALDOMAIN}"
+    assert $CHILD_STATUS.success?, "Unable to create domain #{INTERNALDOMAIN}"
     system("/home/vpopmail/bin/vadduser #{INTERNALEMAIL} #{INTERNALPASSWORD}")
-    assert $?.success?, "Unable to create user #{INTERNALEMAIL}"
+    assert $CHILD_STATUS.success?, "Unable to create user #{INTERNALEMAIL}"
   end
 
   after do
     system("/home/vpopmail/bin/vdeluser #{INTERNALEMAIL}")
-    assert $?.success?, "Unable to delete user #{INTERNALEMAIL}"
+    assert $CHILD_STATUS.success?, "Unable to delete user #{INTERNALEMAIL}"
     # Delete test domain
     system("/home/vpopmail/bin/vdeldomain #{INTERNALDOMAIN}")
-    assert $?.success?, "Unable to delete domain #{INTERNALDOMAIN}"
+    assert $CHILD_STATUS.success?, "Unable to delete domain #{INTERNALDOMAIN}"
   end
 
   it 'checking directories' do
@@ -93,32 +93,32 @@ describe "qmailtoaster::default" do
   end
 
   it 'checking smtp and submission services' do
-    [ 25, 587 ].each do |port|
+    [25, 587].each do |port|
       assert Net::SMTP.start(IPADDRESS, port, 'localhost').started?, 'Unable to establish a connection to port ' + port.to_s
       assert Net::SMTP.start(IPADDRESS, port, 'localhost', INTERNALEMAIL, INTERNALPASSWORD).started?, 'Unable to authenticate on port ' + port.to_s
       assert Net::SMTP.start(IPADDRESS, port, 'localhost').capable_starttls?, 'Server does not support STARTTLS on port ' + port.to_s
-      assert Net::SMTP.start(IPADDRESS, port, 'localhost').enable_tls,'Unable to create TLS session to port ' + port.to_s
+      assert Net::SMTP.start(IPADDRESS, port, 'localhost').enable_tls, 'Unable to create TLS session to port ' + port.to_s
     end
-    assert sendMail, 'Unable to deliver mail to local user'
-    refute sendMail('external'), 'Host acting as an open relay'
+    assert send_mail, 'Unable to deliver mail to local user'
+    refute send_mail('external'), 'Host acting as an open relay'
   end
 
   it 'checking imap and imap-ssl services' do
     assert Net::IMAP.new(IPADDRESS, 143).capability, 'Unable to establish an IMAP connection'
     assert Net::IMAP.new(IPADDRESS, 993, true, nil, false).capability, 'Unable to establish an IMAP-SSL connection'
-    assert Net::IMAP.new(IPADDRESS, 143).authenticate('LOGIN',INTERNALEMAIL, INTERNALPASSWORD), 'Unable to authenticate against IMAP server'
+    assert Net::IMAP.new(IPADDRESS, 143).authenticate('LOGIN', INTERNALEMAIL, INTERNALPASSWORD), 'Unable to authenticate against IMAP server'
     assert Net::IMAP.new(IPADDRESS, 993, true, nil, false).authenticate('LOGIN', INTERNALEMAIL, INTERNALPASSWORD), 'Unable to authenticate against IMAP-SSL server'
-    sendMail
+    send_mail
     imap = Net::IMAP.new(IPADDRESS, 143)
     imap.authenticate('LOGIN', INTERNALEMAIL, INTERNALPASSWORD)
-    imap.status('INBOX', [ 'UNSEEN' ])['UNSEEN'].must_equal 1, 'Unable to read mailbox'
+    imap.status('INBOX', ['UNSEEN'])['UNSEEN'].must_equal 1, 'Unable to read mailbox'
   end
 
   it 'checking pop3 and pop3-ssl services' do
     # assert Net::POP3.new(IPADDRESS).start(INTERNALEMAIL, INTERNALPASSWORD).started?, 'Unable to establish a pop3 connection'
     Net::POP3.enable_ssl(OpenSSL::SSL::VERIFY_NONE)
     assert Net::POP3.new(IPADDRESS).start(INTERNALEMAIL, INTERNALPASSWORD).started?, 'Unable to establish a pop3-ssl connection'
-    sendMail
+    send_mail
     Net::POP3.new(IPADDRESS).start(INTERNALEMAIL, INTERNALPASSWORD).mails.size.must_equal 1, 'Unable to read mailbox'
   end
 

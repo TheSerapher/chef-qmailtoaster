@@ -1,6 +1,8 @@
 require 'chefspec'
 
+# Adding ChefSpec checks
 module ChefSpec
+  # Extend matchers module
   module Matchers
     # Check whether a bash script was run.
     # Example: chef_run.should execute_bash_script 'name-of-script'
@@ -25,7 +27,7 @@ module ChefSpec
   RSpec::Matchers.define :remove_rpm_package do |package_name|
     match do |chef_run|
       chef_run.resources.any? do |resource|
-        resource_type(resource) == 'rpm_package' and resource.name == package_name
+        resource_type(resource) == 'rpm_package' && resource.name == package_name
       end
     end
   end

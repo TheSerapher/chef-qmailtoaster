@@ -16,7 +16,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
 # Add required repositories
 include_recipe 'qmailtoaster::_add_repositories'
 

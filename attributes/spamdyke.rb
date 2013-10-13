@@ -12,7 +12,7 @@ default['spamdyke']['graylist_dir'] = node['spamdyke']['var_dir'] + '/graylist'
 default['spamdyke']['conf_file'] = node['spamdyke']['conf_dir'] + '/spamdyke.conf'
 default['spamdyke']['qmail']['supervise'] = '/var/qmail/supervise'
 default['spamdyke']['qmail']['control'] = '/var/qmail/control'
-default['spamdyke']['rcphost']['files'] = ['rcpthosts', 'morercpthosts']
+default['spamdyke']['rcphost']['files'] = %w('rcpthosts', 'morercpthosts')
 
 # Runtime options
 default['spamdyke']['vpopmail']['user'] = 'vpopmail'
@@ -26,7 +26,7 @@ default['spamdyke']['config']['main'] = {
     'dns-blacklist-entry' => 'bl.spamcop.net',
     'graylist-dir' => "#{node['spamdyke']['var_link']}/graylist",
     'graylist-level' => 'always',
-    'graylist-max-secs' => 2678400,
+    'graylist-max-secs' => 2_678_400,
     'graylist-min-secs' => 180,
     'greeting-delay-secs' => 5,
     'idle-timeout-secs' => 60,
@@ -52,15 +52,15 @@ default['spamdyke']['config']['main'] = {
 }
 
 # Blacklist entries
-default['spamdyke']['config']['blacklist']['ip'] = [ ]
-default['spamdyke']['config']['blacklist']['rdns'] = [ ]
-default['spamdyke']['config']['blacklist']['keywords'] = [ ]
-default['spamdyke']['config']['blacklist']['recipients'] = [ ]
-default['spamdyke']['config']['blacklist']['senders'] = [ ]
+default['spamdyke']['config']['blacklist']['ip'] = []
+default['spamdyke']['config']['blacklist']['rdns'] = []
+default['spamdyke']['config']['blacklist']['keywords'] = []
+default['spamdyke']['config']['blacklist']['recipients'] = []
+default['spamdyke']['config']['blacklist']['senders'] = []
 
 # Whitelist entries
-default['spamdyke']['config']['whitelist']['ip'] = [ '127.0.0.1' ]
-default['spamdyke']['config']['whitelist']['rdns'] = [ ]
-default['spamdyke']['config']['whitelist']['keywords'] = [ ]
-default['spamdyke']['config']['whitelist']['recipients'] = [ ]
-default['spamdyke']['config']['whitelist']['senders'] = [ ]
+default['spamdyke']['config']['whitelist']['ip'] = ['127.0.0.1']
+default['spamdyke']['config']['whitelist']['rdns'] = []
+default['spamdyke']['config']['whitelist']['keywords'] = []
+default['spamdyke']['config']['whitelist']['recipients'] = []
+default['spamdyke']['config']['whitelist']['senders'] = []
