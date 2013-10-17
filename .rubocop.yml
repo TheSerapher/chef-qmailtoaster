@@ -1,5 +1,7 @@
 AllCops:
   Excludes:
+    - bin/**
+    - cookbooks/**
     - vendor/**
 
 AlignParameters:

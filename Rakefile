@@ -1,4 +1,5 @@
 require 'chef/cookbook/metadata'
+require 'ci/reporter/rake/rspec'
 
 def cookbook_metadata
   metadata = Chef::Cookbook::Metadata.new
@@ -15,6 +16,7 @@ def cookbook_name
   end
 end
 
+VAGRANT = ENV['VAGRANT'] || false
 COOKBOOK_NAME = ENV['COOKBOOK_NAME'] || cookbook_name
 COOKBOOKS_PATH = ENV['COOKBOOKS_PATH'] || 'cookbooks'
 
@@ -26,7 +28,7 @@ end
 
 desc 'Run knife cookbook test'
 task :knife => :setup_cookbooks do
-  sh 'knife', 'cookbook', 'test', COOKBOOK_NAME, '--config', '.knife.rb',
+  sh 'knife', 'cookbook', 'test', COOKBOOK_NAME, '--config', 'knife.rb',
     '--cookbook-path', COOKBOOKS_PATH
 end
 
@@ -37,14 +39,14 @@ task :foodcritic => :setup_cookbooks do
 end
 
 desc 'Run ChefSpec examples'
-task :chefspec => :setup_cookbooks do
+task :chefspec => [:setup_cookbooks, 'ci:setup:rspec'] do
   sh 'rspec', '--color', '--format', 'documentation',
     File.join(COOKBOOKS_PATH, COOKBOOK_NAME, 'spec')
 end
 
 desc 'Run Rubocop'
-task :rubocop => :setup_cookbooks do
-  sh 'rubocop', File.join(COOKBOOKS_PATH, COOKBOOK_NAME)
+task :rubocop do
+  sh 'rubocop', '-fs'
 end
 
 desc 'Run Kitchen'
@@ -52,15 +54,23 @@ task :kitchen do
   sh 'kitchen', 'test'
 end
 
+desc 'Run Vagrant'
+task :vagrant do
+  if VAGRANT
+    rm_rf 'spec/reports/minitest'
+    sh 'vagrant', 'up'
+    sh 'vagrant', 'destroy', '-f'
+  end
+end
+
 desc 'Run all tests'
-task :test => [:knife, :foodcritic, :chefspec, :rubocop]
+task :test => [:knife, :foodcritic, :chefspec, :rubocop, :vagrant]
 
 # Default, test everything
 task :default => :test
 
 # aliases
 task :lint => :foodcritic
-task :spec => :chefspec
 
 # Cleanup testing cookbooks
 at_exit { rm_rf COOKBOOKS_PATH }

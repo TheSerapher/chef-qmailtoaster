@@ -1,4 +1,5 @@
 # Bundler
+Gemfile.lock
 /.bundle/
 /bin/
 /bundle/
@@ -8,10 +9,10 @@
 /cookbooks/
 Berksfile.lock
 
-# Bundler
-Gemfile.lock
-
 # Vagrant
 .vagrant
 .kitchen/
 .kitchen.local.yml
+
+# Tests
+/spec/reports/
