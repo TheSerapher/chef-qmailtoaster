@@ -22,8 +22,7 @@ default['spamdyke']['qmail']['group'] = 'qmail'
 
 # Spamdyke main configuration options
 default['spamdyke']['config']['main'] = {
-    'dns-blacklist-entry' => 'zen.spamhaus.org',
-    'dns-blacklist-entry' => 'bl.spamcop.net',
+    'dns-blacklist-entry' => [ 'zen.spamhaus.org', 'bl.spamcop.net' ],
     'graylist-dir' => "#{node['spamdyke']['var_link']}/graylist",
     'graylist-level' => 'always',
     'graylist-max-secs' => 2_678_400,

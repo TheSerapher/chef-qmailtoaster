@@ -47,7 +47,7 @@ default['qmailtoaster']['packages']['backend']['sources'] = [
     { 'name' => 'ezmlm-toaster', 'version' => '0.53.324-1.3.6', 'checksum' => '875bc452e0268b86bf32e941a6f373c59653d921b8fcc3442829ab62a1bc3474' },
     { 'name' => 'maildrop-toaster', 'version' => '2.0.3-1.3.8', 'checksum' => 'a44c716131ce3ec70607c83708a0dcb6e242e7e111f0bb8333f5eff4de8d1c60' },
     { 'name' => 'spamassassin-toaster', 'version' => '3.3.2-1.4.3', 'checksum' => '9085a0be51766f5769405819bc21202b1801a8a30973289877f2ce2df08a8bc9' },
-    { 'name' => 'clamav-toaster', 'version' => '0.97.8-1.4.4', 'checksum' => '034b185d44d76c367c28871f29348e176ab1b8150e25f5deb5933d205f09ef1c' },
+    { 'name' => 'clamav-toaster', 'version' => '0.98.1-1.4.6', 'checksum' => '6de7593d6151203e231ef0aeade5c2ece80b1942055e5d1875d24cb68eace43c' },
     { 'name' => 'ripmime-toaster', 'version' => '1.4.0.6-1.3.6', 'checksum' => '6bd8d7d6f97d5302137896b4d20308a33fca657c8acd2f874bb2cba02c7ec73d' },
     { 'name' => 'simscan-toaster', 'version' => '1.4.0-1.4.0', 'checksum' => '2a1f176c42c242e0368420d0f93cfca889f407fff6603a3ac251cf311e01b0e8' }
 ]

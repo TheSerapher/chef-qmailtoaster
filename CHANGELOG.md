@@ -2,6 +2,12 @@
 
 This file is used to list changes made in each version of qmailtoaster.
 
+## 0.1.0:
+
+* ClamAV 0.98.1
+* Allow multiple spamdyke configuration keys with different values
+* Install package if src.rpm version is not the same
+
 ## 0.0.5:
 
 * Removed version dependencies in metadata

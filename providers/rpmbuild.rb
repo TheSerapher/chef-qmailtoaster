@@ -30,7 +30,7 @@ action :install do
     source "#{node['qmailtoaster']['workspace']}/RPMS/#{new_resource.arch}/" +
            "#{new_resource.name}-#{new_resource.version}.#{new_resource.arch}.rpm"
     provider Chef::Provider::Package::Rpm
-    not_if "rpm -qi #{new_resource.name}"
+    not_if "rpm -qi #{new_resource.name} | grep -q #{new_resource.name}-#{new_resource.version}.src.rpm"
   end
   new_resource.updated_by_last_action(true) if r.updated_by_last_action?
 end
