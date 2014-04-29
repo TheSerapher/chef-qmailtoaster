@@ -17,13 +17,14 @@
 # limitations under the License.
 
 # Install packages from source
-node['qmailtoaster']['packages']['backend']['sources'].each do |data|
-  qmailtoaster_rpmbuild data['name'] do
-    version data['version']
-    arch data['arch']
+node['qmailtoaster']['packages']['backend']['sources'].each do |pkg|
+  qmailtoaster_rpmbuild pkg['name'] do
+    version pkg['version']
+    arch pkg['arch']
+    checksum pkg['checksum']
   end
 end
 
 service 'qmail' do
-  action [ :enable ]
+  action [:enable]
 end

@@ -1,3 +1,9 @@
 <% @config.keys.each do |key| %>
+<% if @config[key].kind_of?(Array) %>
+<% @config[key].each do |value| %>
+<%= key %>=<%= value %>
+<% end %>
+<% else %>
 <%= key %>=<%= @config[key] %>
+<% end %>
 <% end %>

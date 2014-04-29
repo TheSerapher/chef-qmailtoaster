@@ -42,29 +42,28 @@ This is a test message.
 "
 
 module Helpers
+  # Helper module for Qmailtoaster tests
   module QmailtoasterTest
     include Chef::Mixin::ShellOut
     include MiniTest::Chef::Assertions
     include MiniTest::Chef::Context
     include MiniTest::Chef::Resources
     # Create default testing domain and user
-    def sendMail(type='internal')
-      smtp = Net::SMTP.start(IPADDRESS, 25) 
+    def send_mail(type = 'internal')
+      smtp = Net::SMTP.start(IPADDRESS, 25)
       case type
       when 'internal'
         begin
           ret = smtp.send_message INTERNALMAILMESSAGE, INTERNALEMAIL, INTERNALEMAIL
-        rescue
         end
       when 'external'
         begin
           ret = smtp.send_message EXTERNALMAILMESSAGE, EXTERNALEMAIL, EXTERNALEMAIL
-        rescue
         end
       end
       smtp.finish
       sleep(2)
-      return ret
+      ret
     end
   end
 end
