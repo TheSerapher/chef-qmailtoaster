@@ -26,7 +26,6 @@ describe 'qmailtoaster::default' do
   end
   %w{
     build-essential
-    mysql
     mysql::server
     qmailtoaster::_add_repositories
     qmailtoaster::_pre_setup
