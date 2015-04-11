@@ -1,5 +1,5 @@
 # Spamdyke options to compile and install
-default['spamdyke']['version'] = '4.3.1'
+default['spamdyke']['version'] = '5.0.0'
 default['spamdyke']['source']['url'] = 'http://www.spamdyke.org/releases'
 default['spamdyke']['source']['directory'] = '/usr/src/spamdyke'
 default['spamdyke']['base_dir'] = '/opt/spamdyke'
@@ -33,7 +33,7 @@ default['spamdyke']['config']['main'] = {
     'ip-in-rdns-keyword-blacklist-file' => "#{node['spamdyke']['conf_link']}/blacklist_keywords",
     'ip-in-rdns-keyword-whitelist-file' => "#{node['spamdyke']['conf_link']}/whitelist_keywords",
     'ip-whitelist-file' => "#{node['spamdyke']['conf_link']}/whitelist_ip",
-    'local-domains-file' => "#{node['spamdyke']['qmail']['control']}/rcpthosts",
+    'qmail-rcpthosts-file' => "#{node['spamdyke']['qmail']['control']}/rcpthosts",
     'log-target' => 'stderr',
     'max-recipients' => 50,
     'rdns-blacklist-file' => "#{node['spamdyke']['conf_link']}/blacklist_rdns",
@@ -41,7 +41,8 @@ default['spamdyke']['config']['main'] = {
     'recipient-blacklist-file' => "#{node['spamdyke']['conf_link']}/blacklist_recipients",
     'recipient-whitelist-file' => "#{node['spamdyke']['conf_link']}/whitelist_recipients",
     'reject-empty-rdns' => 'yes',
-    'reject-missing-sender-mx' => 'yes',
+    'reject-sender' => 'no-mx',
+    'reject-recipient' => 'invalid',
     'reject-unresolvable-rdns' => 'yes',
     'sender-blacklist-file' => "#{node['spamdyke']['conf_link']}/blacklist_senders",
     'sender-whitelist-file' => "#{node['spamdyke']['conf_link']}/whitelist_senders",

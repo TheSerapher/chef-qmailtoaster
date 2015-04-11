@@ -18,32 +18,37 @@
 
 remote_file "#{node['spamdyke']['source']['directory']}/spamdyke-#{node['spamdyke']['version']}.tgz" do
   source "#{node['spamdyke']['source']['url']}/spamdyke-#{node['spamdyke']['version']}.tgz"
-  not_if "test -f #{node['spamdyke']['source']['directory']}/spamdyke-#{node['spamdyke']['version']}.tgz"
+  notifies :run, 'bash[unpack-spamdyke]', :immediately
 end
 
 bash 'unpack-spamdyke' do
+  action :nothing
   cwd node['spamdyke']['source']['directory']
   code <<-EOH
-    pwd
     tar xzf spamdyke-#{node['spamdyke']['version']}.tgz
   EOH
-  not_if "test -d #{node['spamdyke']['source']['directory']}/spamdyke-#{node['spamdyke']['version']}"
+  notifies :run, 'bash[compile-spamdyke]', :immediately
 end
 
 bash 'compile-spamdyke' do
-  cwd "#{node['spamdyke']['source']['directory']}/spamdyke-#{node['spamdyke']['version']}/spamdyke"
+  action :nothing
+  cwd "#{node['spamdyke']['source']['directory']}/spamdyke-#{node['spamdyke']['version']}"
   code <<-EOH
-    pwd
+    cd spamdyke
     ./configure
     make
+    cd ../spamdyke-qrv
+    ./configure --with-vpopmail-support VALIAS_PATH=/home/vpopmail/bin/valias VUSERINFO_PATH=/home/vpopmail/bin/vuserinfo
+    make
   EOH
-  not_if "#{node['spamdyke']['bin_dir']}/spamdyke -v 2>&1 | grep -q \'spamdyke #{node['spamdyke']['version']}\'"
+  notifies :run, 'bash[install-spamdyke]', :immediately
 end
 
 bash 'install-spamdyke' do
-  cwd "#{node['spamdyke']['source']['directory']}/spamdyke-#{node['spamdyke']['version']}/spamdyke"
+  action :nothing
+  cwd "#{node['spamdyke']['source']['directory']}/spamdyke-#{node['spamdyke']['version']}"
   code <<-EOH
-    cp spamdyke #{node['spamdyke']['bin_dir']}
+    cp spamdyke/spamdyke #{node['spamdyke']['bin_dir']}
+    cp spamdyke-qrv/spamdyke-qrv #{node['spamdyke']['bin_dir']}
   EOH
-  not_if "#{node['spamdyke']['bin_dir']}/spamdyke -v 2>&1 | grep -q \'spamdyke #{node['spamdyke']['version']}\'"
 end
