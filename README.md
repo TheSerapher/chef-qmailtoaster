@@ -121,13 +121,6 @@ To run the full kitchen suite included in this cookbook simply execute:
     $ bundle exec kitchen test
 
 
-Build Status
-============
-
-This repository is tested against [codeship.io](http://www.codeship.io):
-
-[ ![Codeship Status for TheSerapher/chef-qmailtoaster](https://www.codeship.io/projects/c6ea8420-4b94-0130-815e-12313928a5d9/status?branch=master)](https://www.codeship.io/projects/1313)
-
 License and Author
 ==================
 
